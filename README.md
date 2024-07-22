@@ -10,6 +10,7 @@ Requirements
 Script Overview
 
 •	This script automates LinkedIn profile scraping based on company-specific or generalized search queries. Users can refine results by location or job title. The profiles are then saved into a CSV file.
+
 Setup
 
 •	WebDriver: The script uses ChromeDriver managed by WebDriver Manager, which simplifies the driver management automatically.
