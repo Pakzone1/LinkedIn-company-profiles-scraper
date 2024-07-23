@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Scraper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>LinkedIn Scraper</h1>
+        <form id="scraperForm">
+            <label for="approach">Choose approach:</label>
+            <select id="approach" name="approach">
+                <option value="generalized">Generalized</option>
+                <option value="specific">Specific</option>
+            </select>
+
+            <div id="companyNameField">
+                <label for="companyName">Enter the name of the company:</label>
+                <input type="text" id="companyName" name="companyName">
+            </div>
+
+            <div id="companyURLField">
+                <label for="companyURL">Give URL of company:</label>
+                <input type="text" id="companyURL" name="companyURL">
+            </div>
+
+            <label for="filterOption">Filter by:</label>
+            <select id="filterOption" name="filterOption">
+                <option value="location">Location</option>
+                <option value="jobTitle">Job Title</option>
+            </select>
+
+            <label for="filterValue">Enter filter value:</label>
+            <input type="text" id="filterValue" name="filterValue">
+
+            <label for="idLinkedin">LinkedIn Email:</label>
+            <input type="email" id="idLinkedin" name="idLinkedin">
+
+            <label for="passLinkedin">LinkedIn Password:</label>
+            <input type="password" id="passLinkedin" name="passLinkedin">
+
+            <button type="submit">Submit</button>
+        </form>
+        <div id="response"></div>
+        <div id="loading" style="display: none;">Loading...</div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
