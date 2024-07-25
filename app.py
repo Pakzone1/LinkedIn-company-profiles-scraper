@@ -6,6 +6,13 @@ app = Flask(__name__, template_folder='frontend/templates',
             static_folder='frontend/static')
 
 # Route to serve the frontend
+approach = "your_approach"
+company_name = "your_company_name"
+company_url = "your_company_url"
+filter_option = "your_filter_option"
+filter_value = "your_filter_value"
+id_linkedin = "your_id_linkedin"
+pass_linkedin = "your_pass_linkedin"
 
 
 @app.route('/')
@@ -16,6 +23,8 @@ def index():
 @app.route('/submit', methods=['POST'])
 def submit():
     try:
+        global approach, company_name, company_url, filter_option, filter_value, id_linkedin, pass_linkedin
+
         approach = request.form.get('approach')
         company_name = request.form.get('companyName')
         company_url = request.form.get('companyURL')
@@ -55,7 +64,7 @@ service = ChromeService(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service)
 wait = WebDriverWait(driver, 20)
 
-filename = "linkedin_profiles.csv"
+filename = f"{company_name}_{filter_option}_{filter_value}.csv"
 with open(filename, mode="w", newline="", encoding="utf-8") as file:
     writer = csv.writer(file)
     writer.writerow(['Name', 'Title', 'Location', 'Profile URL'])
@@ -152,7 +161,7 @@ with open(filename, mode="w", newline="", encoding="utf-8") as file:
 
 @app.route('/download')
 def download():
-    path = "linkedin_profiles.csv"
+    path = f"({company_url}){company_name}_{filter_option}_{filter_value}.csv"
     return send_file(path, as_attachment=True)
 
 
